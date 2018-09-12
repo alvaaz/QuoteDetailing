@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { initialState } from './initial-state'
-import {First, Second, Third} from './components/Steps'
+import First from './components/pages/First'
+import {Second, Third} from './components/Steps'
 import { SideBar } from './components/SideBar'
-import data from './data.json'
 import Buttons from './components/Buttons'
 
 class App extends Component {
   state = initialState
-  handleCarSelection = (car) => {
+  _handleCarSelection = (car) => {
     this.setState({
       selectedCar: car
     })
@@ -16,9 +16,8 @@ class App extends Component {
     switch(this.state.currentSlot) {
       case 0:
         return <First
-          handleCarSelection={(car) => this.handleCarSelection(car)}
+          handleCarSelection={(car) => this._handleCarSelection(car)}
           selectedCar={this.state.selectedCar}
-          cards={data}
           stepName={this.state.stages[0].name}
         />
       case 1:

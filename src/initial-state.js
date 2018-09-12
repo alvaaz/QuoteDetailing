@@ -1,6 +1,7 @@
 export const initialState = {
     currentSlot: 0,
     selectedCar: null,
+    selectedPrint: null,
     complete: false,
     stages: [
         {

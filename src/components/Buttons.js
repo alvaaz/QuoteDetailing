@@ -18,7 +18,7 @@ const Button = styled.button`
 `
 
 const Buttons = (props) => {
-    return <Button onClick={props.onClick} disabled={props.disabled}>{props.value}</Button>
+    return <Button onClick={() => props.onClick(props.value)} disabled={props.disabled}>{props.value}</Button>
 }
 
 Buttons.defaultProps = {

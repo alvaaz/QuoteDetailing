@@ -30,8 +30,8 @@ const CardImg = styled.img`
 `
 
 const Card = (props) => {
-  return <CardContainer select={props.isSelect} onClick={() => props.handleSelection(props.type)}>
-    <Indicators checked={props.isSelect}/>
+  return <CardContainer select={props.isSelect} onClick={() => {props.handleSelection(props.type)}}>
+    <Indicators checked={props.isSelect} backgroundColor="#FF1744"/>
       <CardImg select={props.isSelect} src={props.image} alt=""/>
         <CardTitle>
           {props.name}

@@ -10,16 +10,24 @@ const ContainerCard = styled.section`
   padding: 0 8vw;
 `
 
-const Cars = ({ data: { loading, error, cars}, selectedCar, handleCarSelection}) => {
+const isSelected = (car, selected) => {
+ if(selected.option){
+    return car.id === selected.option.id
+ }else{
+   return false;
+ }
+}
+
+const Cars = ({ data: { loading, error, cars}, selectedItems, handleClassSelection}) => {
     if (error) return <h1>Error al adquirir los autos</h1>
     if (!loading) {
       return (
         <ContainerCard>
           {cars.map(car =>(
             <Card
-              isSelect={selectedCar === car}
+              isSelect={isSelected(car, selectedItems)}
               image={`https://media.graphcms.com/${car.coverImage.handle}`}
-              handleSelection={x => handleCarSelection(x)}
+              handleSelection={item => handleClassSelection(item)}
               name={car.title}
               key={car.id}
               type={car}

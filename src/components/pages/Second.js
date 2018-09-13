@@ -9,17 +9,24 @@ const ContainerCard = styled.section`
   justify-content: space-around;
   padding: 0 8vw;
 `
+const isSelected = (print, selected) => {
+  if(selected.option){
+     return print.id === selected.option.id
+  }else{
+    return false;
+  }
+ }
 
-const Prints = ({ data: { loading, error, prints}, selectedPrint, handlePrintSelection}) => {
+const Prints = ({ data: { loading, error, prints}, selectedItems, handleClassSelection}) => {
     if (error) return <h1>Error al adquirir los autos</h1>
     if (!loading) {
       return (
         <ContainerCard>
           {prints.map(print =>(
             <Card
-              isSelect={selectedPrint === print}
+              isSelect={isSelected(print, selectedItems)}
               image={`https://media.graphcms.com/${print.image.handle}`}
-              handleSelection={x => handlePrintSelection(x)}
+              handleSelection={x => handleClassSelection(x)}
               name={print.condition}
               key={print.id}
               type={print}

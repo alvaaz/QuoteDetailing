@@ -1,5 +1,5 @@
 import React from 'react'
-import Indicators from './Indicator'
+import Indicator from './Indicators'
 import styled from 'styled-components'
 
 const CardContainer = styled.article`
@@ -30,13 +30,15 @@ const CardImg = styled.img`
 `
 
 const Card = (props) => {
-  return <CardContainer select={props.isSelect} onClick={() => {props.handleSelection(props.type)}}>
-    <Indicators checked={props.isSelect} backgroundColor="#FF1744"/>
-      <CardImg select={props.isSelect} src={props.image} alt=""/>
-        <CardTitle>
-          {props.name}
-        </CardTitle>
-      </CardContainer>
+  return (
+    <CardContainer select={props.isSelect} onClick={() => {props.handleSelection(props.type)}}>
+      <Indicator.check check={props.isSelect} backgroundColor={props.isSelect ? '#FF1744' : ''}/>
+        <CardImg select={props.isSelect} src={props.image} alt=""/>
+          <CardTitle>
+            {props.name}
+          </CardTitle>
+    </CardContainer>
+  )
 }
 
 export default Card

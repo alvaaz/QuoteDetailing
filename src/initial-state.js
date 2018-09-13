@@ -1,24 +1,27 @@
 export const initialState = {
     currentSlot: 0,
-    selectedCar: null,
-    selectedPrint: null,
+    enableStep: false,
     complete: false,
     stages: [
         {
-            name: 'Selecciona el tipo de vehículo',
-            stage: 1
+            name: 'Selecciona el tipo de vehículo'
         },
         {
-            name: 'Segunda',
-            stage: 2
+            name: 'Segunda'
         },
         {
-            name: 'Tercera',
-            stage: 3
+            name: 'Tercera'
         },
         {
-            name: 'Cuarta',
-            stage: 4
+            name: 'Cuarta'
+        }
+    ],
+    selected: [
+        {
+            option: null
+        },
+        {
+            option: null
         }
     ]
 }

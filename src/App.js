@@ -14,30 +14,25 @@ const Main = styled.main`
 
 class App extends Component {
   state = initialState
-
-  _handleCarSelection = (car) => {
-    this.setState({
-      selectedCar: car,
-      currentSlot: 0
-    })
-  }
-  _handlePrintSelection = (print) => {
-    this.setState({
-      selectedPrint: print,
-      currentSlot: 1
-    })
+  _handleOptionSelection = (type) => {
+    const selected = {...this.state.selected}
+    const selection = this.state.selected[this.state.currentSlot]
+    selection.option = type
+    this.setState({ selected, enableStep: true })
   }
   _handleClick = (x) => {
     if(x === 'next') {
-      if(this.state.selectedCar && this.state.currentSlot <= this.state.stages.length - 1){
+      if(this.state.enableStep && this.state.currentSlot <= this.state.stages.length - 1){
         this.setState({
           currentSlot: this.state.currentSlot + 1,
+          enableStep: false,
           complete: this.state.currentSlot === this.state.stages.length - 1 ? true : false,
         })
       }
     } else {
       this.setState({
         currentSlot: this.state.currentSlot - 1,
+        enableStep: true,
         complete: this.state.currentSlot === this.state.stages.length - 1 ? true : false,
       })
     }
@@ -47,14 +42,14 @@ class App extends Component {
     switch(this.state.currentSlot) {
       case 0:
         return <First
-          handleCarSelection={y => this._handleCarSelection(y)}
-          selectedCar={this.state.selectedCar}
+          handleClassSelection={y => this._handleOptionSelection(y)}
+          selectedItems={this.state.selected[this.state.currentSlot]}
           stepName={this.state.stages[0].name}
         />
       case 1:
         return <Second
-          selectedPrint={this.state.selectedPrint}
-          handlePrintSelection={y => this._handlePrintSelection(y)}
+          handleClassSelection={y => this._handleOptionSelection(y)}
+          selectedItems={this.state.selected[this.state.currentSlot]}
           stepName={this.state.stages[1].name}
         />
       case 2:
@@ -73,8 +68,8 @@ class App extends Component {
           <Buttons onClick={(action) => this._handleClick(action)} value="next"></Buttons>
         </Main>
         <SideBar
-          handleCarSelection={y => this._handleCarSelection(y)}
-          selectedCar={this.state.selectedCar}
+          handleCarSelection={y => this._handleOptionSelection(y)}
+          selectedItems={this.state.selected}
           stages={this.state.stages}
           currentSlot={this.state.currentSlot}
         />

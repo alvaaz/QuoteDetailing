@@ -1,7 +1,6 @@
 import React from 'react'
-import Indicator from './Indicator'
+import Indicator from './Indicators'
 import styled from 'styled-components'
-import { Cart } from './Cart'
 
 const Block = styled.aside`
     height: 100vh;
@@ -28,20 +27,33 @@ export const SideBar = (props) => {
           <IndicatorsContainer>
             {
               props.stages.map((stage, index) => {
-                return <Indicator
-                  key={index}
-                  isCurrent={props.currentSlot === index}
-                  number={stage.stage}
-                  checked={index < props.currentSlot}
-                  name={stage.name}
-                  backgroundColor="#6EC10A"
-                />
+                  if (index >= props.currentSlot){
+                    return (
+                      <div key={index} style={{display: 'flex', alignItems: 'center', marginBottom: '0.8rem'}}>
+                        <Indicator.number
+                          number={index + 1}
+                          current={props.currentSlot === index}
+                        />
+                        <span>{stage.name}</span>
+                      </div>
+                    )
+                  } else {
+                    return (
+                      <div key={index} style={{display: 'flex', alignItems: 'center', marginBottom: '0.8rem'}}>
+                        <Indicator.check
+                          check={true}
+                          backgroundColor='#6EC10A'
+                        />
+                        <span>{stage.name}</span>
+                      </div>
+                    )
+                  }
               })
             }
           </IndicatorsContainer>
           <div style={{paddingTop: '8rem'}}>
             <CartTitle>Resumen pedido</CartTitle>
-            <Cart handleSelection={x => props.handleCarSelection(x)} selectedCar={props.selectedCar}/>
+
           </div>
         </Block>
     )

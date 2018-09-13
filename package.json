@@ -8,6 +8,7 @@
     "apollo-link-http": "^1.5.4",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.9.2",
+    "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-apollo": "^2.1.11",
     "react-dom": "^16.4.2",

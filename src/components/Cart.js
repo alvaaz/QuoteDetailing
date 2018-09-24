@@ -17,6 +17,7 @@ export const Cart = props => {
                     <div style={{display: 'inline-block'}}>
                         <p>{props.stages[index].name}</p>
                         <p>{product.title}</p>
+                        <button onClick={() => props.changeProduct(index)}>E</button>
                     </div>
                 </Image>
             </div>

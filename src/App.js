@@ -24,6 +24,11 @@ class App extends Component {
       this.setState({ enableStep: true, cart: cartItem})
     }
   }
+  changeProduct = (slot) => {
+    this.setState({
+      currentSlot: slot
+    })
+  }
   checkProduct(product) {
     if(product === undefined) {
       return false
@@ -92,6 +97,7 @@ class App extends Component {
           selectedItems={this.state.cart}
           stages={this.state.stages}
           currentSlot={this.state.currentSlot}
+          changeProduct={w => this.changeProduct(w)}
         />
       </React.Fragment>
     )

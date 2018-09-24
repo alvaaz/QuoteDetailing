@@ -1,6 +1,7 @@
 import React from 'react'
 import Indicator from './Indicators'
 import styled from 'styled-components'
+import { Cart } from './Cart'
 
 const Block = styled.aside`
     height: 100vh;
@@ -53,7 +54,7 @@ export const SideBar = (props) => {
           </IndicatorsContainer>
           <div style={{paddingTop: '8rem'}}>
             <CartTitle>Resumen pedido</CartTitle>
-
+            <Cart stages={props.stages} product={props.selectedItems}/>
           </div>
         </Block>
     )

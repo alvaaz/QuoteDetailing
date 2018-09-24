@@ -15,41 +15,61 @@ const Main = styled.main`
 class App extends Component {
   state = initialState
   _handleOptionSelection = (type) => {
-    const selected = {...this.state.selected}
-    const selection = this.state.selected[this.state.currentSlot]
-    selection.option = type
-    this.setState({ selected, enableStep: true })
+    let cartItem = this.state.cart
+    let currentSlot = this.state.currentSlot
+    if(this.checkProduct(type)){
+      console.log('ya existe')
+    }else {
+      cartItem.splice(currentSlot, 1, type)
+      this.setState({ enableStep: true, cart: cartItem})
+    }
+  }
+  checkProduct(product) {
+    if(product === undefined) {
+      return false
+    } else {
+      return this.state.cart.some((item) => {
+        return item.id === product.id
+      })
+    }
+
   }
   _handleClick = (x) => {
+    let cart = this.state.cart
+    let currentSlot = this.state.currentSlot
     if(x === 'next') {
-      if(this.state.enableStep && this.state.currentSlot <= this.state.stages.length - 1){
+      if(this.checkProduct(cart[currentSlot])){
         this.setState({
-          currentSlot: this.state.currentSlot + 1,
+          currentSlot: currentSlot + 1,
           enableStep: false,
-          complete: this.state.currentSlot === this.state.stages.length - 1 ? true : false,
+          complete: currentSlot === this.state.stages.length - 1 ? true : false,
         })
+      } else {
+        console.log('No se puede avanzar')
       }
     } else {
       this.setState({
-        currentSlot: this.state.currentSlot - 1,
+        currentSlot: currentSlot - 1,
         enableStep: true,
-        complete: this.state.currentSlot === this.state.stages.length - 1 ? true : false,
+        complete: currentSlot === this.state.stages.length - 1 ? true : false,
       })
     }
   }
 
   renderCurrentStep = () => {
-    switch(this.state.currentSlot) {
+    let cart = this.state.cart
+    let currentSlot = this.state.currentSlot
+    switch(currentSlot) {
       case 0:
         return <First
           handleClassSelection={y => this._handleOptionSelection(y)}
-          selectedItems={this.state.selected[this.state.currentSlot]}
+          selectedItems={cart[currentSlot]}
           stepName={this.state.stages[0].name}
         />
       case 1:
         return <Second
           handleClassSelection={y => this._handleOptionSelection(y)}
-          selectedItems={this.state.selected[this.state.currentSlot]}
+          selectedItems={cart[currentSlot]}
           stepName={this.state.stages[1].name}
         />
       case 2:
@@ -69,7 +89,7 @@ class App extends Component {
         </Main>
         <SideBar
           handleCarSelection={y => this._handleOptionSelection(y)}
-          selectedItems={this.state.selected}
+          selectedItems={this.state.cart}
           stages={this.state.stages}
           currentSlot={this.state.currentSlot}
         />

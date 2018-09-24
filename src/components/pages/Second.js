@@ -10,8 +10,8 @@ const ContainerCard = styled.section`
   padding: 0 8vw;
 `
 const isSelected = (print, selected) => {
-  if(selected.option){
-     return print.id === selected.option.id
+  if(selected){
+     return print.id === selected.id
   }else{
     return false;
   }
@@ -27,7 +27,7 @@ const Prints = ({ data: { loading, error, prints}, selectedItems, handleClassSel
               isSelect={isSelected(print, selectedItems)}
               image={`https://media.graphcms.com/${print.image.handle}`}
               handleSelection={x => handleClassSelection(x)}
-              name={print.condition}
+              name={print.title}
               key={print.id}
               type={print}
               price={print.price}
@@ -43,7 +43,7 @@ export const prints = gql`
   query prints {
     prints {
       id
-      condition
+      title
       image {
         handle
       }

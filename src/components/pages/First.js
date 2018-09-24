@@ -11,8 +11,8 @@ const ContainerCard = styled.section`
 `
 
 const isSelected = (car, selected) => {
- if(selected.option){
-    return car.id === selected.option.id
+ if(selected){
+    return car.id === selected.id
  }else{
    return false;
  }
@@ -26,7 +26,7 @@ const Cars = ({ data: { loading, error, cars}, selectedItems, handleClassSelecti
           {cars.map(car =>(
             <Card
               isSelect={isSelected(car, selectedItems)}
-              image={`https://media.graphcms.com/${car.coverImage.handle}`}
+              image={`https://media.graphcms.com/${car.image.handle}`}
               handleSelection={item => handleClassSelection(item)}
               name={car.title}
               key={car.id}
@@ -46,7 +46,7 @@ export const cars = gql`
       id
       title
       price
-      coverImage {
+      image {
         handle
       }
     }

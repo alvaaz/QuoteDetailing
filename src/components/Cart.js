@@ -17,6 +17,7 @@ export const Cart = props => {
                     <div style={{display: 'inline-block'}}>
                         <p>{props.stages[index].name}</p>
                         <p>{product.title}</p>
+                        <span>{product.price}</span>
                         <button onClick={() => props.changeProduct(index)}>E</button>
                     </div>
                 </Image>
@@ -26,6 +27,11 @@ export const Cart = props => {
     return (
         <div>
             {cartItems}
+            <div>
+                <h4>Total</h4>
+                <span>{props.totalAmount}</span>
+            </div>
+
         </div>
     )
 }

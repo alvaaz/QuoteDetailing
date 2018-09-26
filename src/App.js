@@ -14,6 +14,18 @@ const Main = styled.main`
 
 class App extends Component {
   state = initialState
+
+  sumTotalAmount() {
+    let total = 0
+    let cart = this.state.cart
+    for (let i = 0; i < cart.length; i++) {
+      total += cart[i].price
+    }
+    this.setState({
+      totalAmount: total
+    })
+  }
+
   _handleOptionSelection = (type) => {
     let cartItem = this.state.cart
     let currentSlot = this.state.currentSlot
@@ -23,7 +35,9 @@ class App extends Component {
       cartItem.splice(currentSlot, 1, type)
       this.setState({ enableStep: true, cart: cartItem})
     }
+    this.sumTotalAmount(this.state.cart)
   }
+
   changeProduct = (slot) => {
     if(slot < this.state.currentSlot) {
       this.setState({
@@ -105,6 +119,7 @@ class App extends Component {
           stages={this.state.stages}
           currentSlot={this.state.currentSlot}
           changeProduct={w => this.changeProduct(w)}
+          totalAmount={this.state.totalAmount}
         />
       </React.Fragment>
     )

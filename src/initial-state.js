@@ -2,6 +2,7 @@ export const initialState = {
     currentSlot: 0,
     enableStep: false,
     complete: false,
+    totalAmount: 0,
     cart: [],
     stages: [
         {

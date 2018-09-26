@@ -54,7 +54,7 @@ export const SideBar = (props) => {
           </IndicatorsContainer>
           <div style={{paddingTop: '8rem'}}>
             <CartTitle>Resumen pedido</CartTitle>
-            <Cart changeProduct={item => props.changeProduct(item)} stages={props.stages} product={props.selectedItems}/>
+            <Cart totalAmount={props.totalAmount} changeProduct={item => props.changeProduct(item)} stages={props.stages} product={props.selectedItems}/>
           </div>
         </Block>
     )

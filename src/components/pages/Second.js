@@ -44,6 +44,7 @@ export const prints = gql`
     prints {
       id
       title
+      price
       image {
         handle
       }

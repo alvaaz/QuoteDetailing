@@ -8,17 +8,17 @@ const Button = styled.button`
     margin: 2rem;
     padding: 0.8rem;
     text-transform: uppercase;
-    background-color: ${props => props.disabled ? '#ffffff': '#FD3939'};
+    background-color: ${props => props.disabled || props.type ? '#ffffff': '#FD3939'};
     border: none;
     border-radius: 4px;
-    color: ${props => props.disabled ? '#9E9E9E' : 'white'}
+    color: ${props => props.disabled || props.type ? '#9E9E9E' : 'white'}
     font-family: 'Raleway', sans-serif;
     font-size: 12px;
     cursor: pointer;
 `
 
 const Buttons = (props) => {
-    return <Button onClick={() => props.onClick(props.value)} disabled={props.disabled}>{props.value}</Button>
+    return <Button onClick={() => props.onClick(props.value)} type={props.type} disabled={props.disabled}>{props.value}</Button>
 }
 
 Buttons.defaultProps = {

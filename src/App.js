@@ -113,7 +113,7 @@ class App extends Component {
       <React.Fragment>
         <Main>
           { this.renderCurrentStep() }
-          <Buttons onClick={(action) => this._handleClick(action)} disabled={this.state.currentSlot === 0} value='prev'></Buttons>
+          <Buttons onClick={(action) => this._handleClick(action)} type={true} disabled={this.state.currentSlot === 0} value='prev'></Buttons>
           <Buttons onClick={(action) => this._handleClick(action)} value="next"></Buttons>
         </Main>
         <SideBar

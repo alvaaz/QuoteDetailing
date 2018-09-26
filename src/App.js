@@ -33,7 +33,10 @@ class App extends Component {
       console.log('ya existe')
     }else {
       cartItem.splice(currentSlot, 1, type)
-      this.setState({ enableStep: true, cart: cartItem})
+      this.setState({
+        enableStep: true,
+        cart: cartItem
+      })
     }
     this.sumTotalAmount(this.state.cart)
   }

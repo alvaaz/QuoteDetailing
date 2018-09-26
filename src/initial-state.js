@@ -6,10 +6,10 @@ export const initialState = {
     cart: [],
     stages: [
         {
-            name: 'Selecciona el tipo de vehículo'
+            name: 'Tipo de vehículo'
         },
         {
-            name: 'Segunda'
+            name: 'Estado Pintura'
         },
         {
             name: 'Tercera'

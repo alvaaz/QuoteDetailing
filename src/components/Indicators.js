@@ -3,12 +3,10 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types';
 
 const Number = styled.div`
-    @import url('https://fonts.googleapis.com/css?family=Raleway:700');
     width: 32px;
     height: 32px;
     background-color: ${props => props.backgroundColor};
     border-radius: 32px;
-    font-family: 'Raleway', sans-serif;
     font-size: 14px;
     text-align: center;
     line-height: 24px;

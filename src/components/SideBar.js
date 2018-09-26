@@ -11,12 +11,14 @@ const Block = styled.aside`
     padding: 1rem 2rem;
 `
 const CartTitle = styled.h4`
-  @import url('https://fonts.googleapis.com/css?family=Raleway:700');
-  font-family: 'Raleway', sans-serif;
   font-size: 12px;
   color: #ADB1C1;
   letter-spacing: 0;
   text-transform: uppercase;
+`
+
+const CartContainer = styled.div`
+  padding-top: 8rem;
 `
 
 const IndicatorsContainer = styled.div`
@@ -52,10 +54,10 @@ export const SideBar = (props) => {
               })
             }
           </IndicatorsContainer>
-          <div style={{paddingTop: '8rem'}}>
+          <CartContainer >
             <CartTitle>Resumen pedido</CartTitle>
             <Cart totalAmount={props.totalAmount} changeProduct={item => props.changeProduct(item)} stages={props.stages} product={props.selectedItems}/>
-          </div>
+          </CartContainer>
         </Block>
     )
 }

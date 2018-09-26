@@ -5,7 +5,16 @@ import Second from './components/pages/Second'
 import {Third} from './components/Steps'
 import { SideBar } from './components/SideBar'
 import Buttons from './components/Buttons'
-import styled from 'styled-components'
+import styled, { injectGlobal } from 'styled-components'
+
+injectGlobal`
+    @import url('https://fonts.googleapis.com/css?family=Raleway:700');
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: 'Raleway', sans-serif;
+    }
+`
 
 const Main = styled.main`
   text-align: center;

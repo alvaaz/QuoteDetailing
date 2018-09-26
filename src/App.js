@@ -25,9 +25,16 @@ class App extends Component {
     }
   }
   changeProduct = (slot) => {
-    this.setState({
-      currentSlot: slot
-    })
+    if(slot < this.state.currentSlot) {
+      this.setState({
+        cart: [],
+        currentSlot: slot
+      })
+    } else {
+      this.setState({
+        currentSlot: slot
+      })
+    }
   }
   checkProduct(product) {
     if(product === undefined) {

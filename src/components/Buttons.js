@@ -20,7 +20,7 @@ const Button = styled.button`
     `}
     ${props => props.primary && css`
         color: white;
-        background-color: hsl(0,98%,60%);
+        background-color: ${props => props.theme.main};
         &:hover {
             background-color: hsl(0,100%,50%);
         }

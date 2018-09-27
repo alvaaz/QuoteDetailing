@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const ProductStage = styled.h3`
-    color: #313442;
+    color: ${props => props.theme.dark};
     font-size: 0.85rem;
     font-weight: bold;
     letter-spacing: 0;
@@ -11,11 +11,10 @@ const ProductStage = styled.h3`
 `
 
 const ProductTitle = styled.h4`
-    color: #ABABAB;
+    color: ${props => props.theme.darkSoft};
     font-size: 0.75rem;
     font-weight: bold;
     margin: 0;
-
 `
 
 const ProductText = styled.div`
@@ -42,14 +41,14 @@ const ProductImage = styled.img`
     object-fit: contain;
 `
 const CartTotal = styled.span`
-    color: #ADB1C1;
+    color: ${props => props.theme.darkSoft};
     font-size: 0.75rem;
     font-weight: bold;
     text-transform: uppercase;
 `
 
 const CartTotalAmount = styled.span`
-    color: #FD3939;
+    color: ${props => props.theme.main};
     font-size: 1rem;
     font-weight: bold;
 `

@@ -3,7 +3,7 @@ import Indicator from './Indicators'
 import styled from 'styled-components'
 
 const CardContainer = styled.article`
-  border: ${props => props.select ? '2px solid #FF1744' : '2px solid #FCD4D4'};
+  border: ${props => props.select ? `2px solid ${props.theme.main}` : `2px solid ${props.theme.mainSoft}`};
   border-radius: 6px;
   cursor: pointer;
   width: fit-content;
@@ -11,9 +11,9 @@ const CardContainer = styled.article`
   transition: all .2s ease-in-out;
   display: inline-block;
   text-align: initial;
-  color: ${props => props.select ? '#FF1744' : '#9E9E9E'}
+  color: ${props => props.select ? props.theme.main : props.theme.darkSoft}
   &:hover {
-    box-shadow: 0 0 0 2px #FCD4D4;
+    box-shadow: 0 0 0 2px ${props => props.theme.mainSoft};
   }
 `
 
@@ -32,7 +32,7 @@ const CardImg = styled.img`
 const Card = (props) => {
   return (
     <CardContainer select={props.isSelect} onClick={() => {props.handleSelection(props.type)}}>
-      <Indicator.check check={props.isSelect} backgroundColor={props.isSelect ? '#FF1744' : ''}/>
+      <Indicator checked={props.isSelect} />
         <CardImg select={props.isSelect} src={props.image} alt=""/>
           <CardTitle>
             {props.name}

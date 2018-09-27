@@ -9,6 +9,7 @@ import { ApolloProvider } from 'react-apollo'
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import { ThemeProvider, injectGlobal } from 'styled-components';
 
 // Replace this with your project's endpoint
 const GRAPHCMS_API = 'https://api-useast.graphcms.com/v1/cjlwqnow603bo01gp1ub4hgoc/master'
@@ -18,10 +19,28 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 })
 
+injectGlobal`
+  @import url('https://fonts.googleapis.com/css?family=Raleway:700');
+  body {
+      padding: 0;
+      margin: 0;
+      font-family: 'Raleway', sans-serif;
+  }
+`
+
+const theme = {
+  main: "#FF1744",
+  success: "#6EC10A",
+  mainSoft: "#FCD4D4",
+  dark: "#313442",
+  darkSoft: "#ADB1C1"
+}
 
 ReactDOM.render(
     <ApolloProvider client={client}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </ApolloProvider>,
     document.getElementById('root')
   )

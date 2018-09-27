@@ -1,6 +1,6 @@
 import React from 'react'
 import Indicator from './Indicators'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { Cart } from './Cart'
 
 const Block = styled.aside`
@@ -12,7 +12,7 @@ const Block = styled.aside`
 `
 const CartTitle = styled.h4`
   font-size: 12px;
-  color: #ADB1C1;
+  color: ${props => props.theme.darkSoft};
   letter-spacing: 0;
   text-transform: uppercase;
 `
@@ -28,7 +28,7 @@ const IndicatorsContainer = styled.div`
     position: absolute;
     width: 2px;
     height: 100%;
-    background-color: #FCD4D4;
+    background-color: ${props => props.theme.mainSoft};
     left: 1rem;
     top: -2rem;
     content: '';
@@ -40,12 +40,11 @@ const StageContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 0.8rem;
-  ${props => props.current && css`
-    color: #6EC10A
-  `}
-  ${props => props.complete && css`
-    color: #6EC10A
-  `}
+
+`
+
+const StageName = styled.span`
+  color: ${props => props.current || props.complete ? props.theme.success : props.theme.dark}
 `
 
 export const SideBar = (props) => {
@@ -54,27 +53,24 @@ export const SideBar = (props) => {
           <IndicatorsContainer>
             {
               props.stages.map((stage, index) => {
-                  if (index >= props.currentSlot){
-                    return (
-                      <StageContainer key={index} current={props.currentSlot === index}>
-                        <Indicator.number
+                let current = props.currentSlot === index
+                let complete = props.currentSlot > index
+                  return (
+                    <StageContainer key={index}>
+                      {
+                        complete ?
+                        <Indicator
+                          check
+                          complete={complete}
+                        />
+                        : <Indicator
                           number={index + 1}
-                          current={props.currentSlot === index}
+                          current={current}
                         />
-                        <span>{stage.name}</span>
-                      </StageContainer>
-                    )
-                  } else {
-                    return (
-                      <StageContainer key={index} complete={props.currentSlot > index}>
-                        <Indicator.check
-                          check={true}
-                          backgroundColor='#6EC10A'
-                        />
-                        <span>{stage.name}</span>
-                      </StageContainer>
-                    )
-                  }
+                      }
+                      <StageName current={current} complete={complete} >{stage.name}</StageName>
+                    </StageContainer>
+                  )
               })
             }
           </IndicatorsContainer>

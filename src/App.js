@@ -54,7 +54,8 @@ class App extends Component {
     if(slot < this.state.currentSlot) {
       this.setState({
         cart: [],
-        currentSlot: slot
+        currentSlot: slot,
+        totalAmount: 0
       })
     } else {
       this.setState({
@@ -121,9 +122,18 @@ class App extends Component {
     return (
       <React.Fragment>
         <Main>
+          <header>
+            <h4>Cotiza con nosotros</h4>
+            <h1>Selecciona el tipo de auto</h1>
+          </header>
           { this.renderCurrentStep() }
-          <Buttons onClick={(action) => this._handleClick(action)} type={true} disabled={this.state.currentSlot === 0} value='prev'></Buttons>
-          <Buttons onClick={(action) => this._handleClick(action)} value="next"></Buttons>
+          <Buttons
+            onClick={(action) => this._handleClick(action)}
+            disabled={this.state.currentSlot === 0}
+            value='prev'
+            link>
+          </Buttons>
+          <Buttons onClick={(action) => this._handleClick(action)} value="next" primary></Buttons>
         </Main>
         <SideBar
           handleCarSelection={y => this._handleOptionSelection(y)}

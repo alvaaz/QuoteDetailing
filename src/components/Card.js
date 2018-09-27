@@ -11,6 +11,7 @@ const CardContainer = styled.article`
   transition: all .2s ease-in-out;
   display: inline-block;
   text-align: initial;
+  color: ${props => props.select ? '#FF1744' : '#9E9E9E'}
   &:hover {
     box-shadow: 0 0 0 2px #FCD4D4;
   }
@@ -19,8 +20,7 @@ const CardContainer = styled.article`
 const CardTitle = styled.h2`
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
-  color: #9E9E9E;
-  letter-spacing: 0;
+  color: inherit;
   text-align: center;
 `
 

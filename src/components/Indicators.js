@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types';
 
 const Number = styled.div`
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
     background-color: ${props => props.backgroundColor};
-    border-radius: 32px;
+    border-radius: 2rem;
     font-size: 14px;
     text-align: center;
     line-height: 24px;

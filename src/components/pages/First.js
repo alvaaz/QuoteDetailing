@@ -3,6 +3,7 @@ import Card from '../Card'
 import styled from 'styled-components'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
+import LoadingProducts from '../../loaders/Products'
 
 const ContainerCard = styled.section`
   display: flex;
@@ -37,7 +38,7 @@ const Cars = ({ data: { loading, error, cars}, selectedItems, handleClassSelecti
         </ContainerCard>
       )
     }
-    return <h2>Cargando autos...</h2>
+    return <LoadingProducts />;
   }
 
 export const cars = gql`

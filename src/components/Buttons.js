@@ -1,21 +1,41 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const Button = styled.button`
     margin: 2rem;
     padding: 0.8rem;
     text-transform: uppercase;
-    background-color: ${props => props.disabled || props.type ? '#ffffff': '#FD3939'};
     border: none;
     border-radius: 4px;
-    color: ${props => props.disabled || props.type ? '#9E9E9E' : 'white'}
     font-family: inherit;
     font-size: 12px;
     cursor: pointer;
+    transition: .4s all ease-in-out;
+    ${props => props.link && css`
+        color: hsl(0, 0%, 62%);
+        background-color: transparent;
+        &:hover {
+            color: hsl(0, 0%, 50%);
+        }
+    `}
+    ${props => props.primary && css`
+        color: white;
+        background-color: hsl(0,98%,60%);
+        &:hover {
+            background-color: hsl(0,100%,50%);
+        }
+    `}
 `
 
 const Buttons = (props) => {
-    return <Button onClick={() => props.onClick(props.value)} type={props.type} disabled={props.disabled}>{props.value}</Button>
+    return <Button
+                onClick={() => props.onClick(props.value)}
+                disabled={props.disabled}
+                primary={props.primary}
+                link={props.link}
+                >
+                {props.value}
+            </Button>
 }
 
 Buttons.defaultProps = {

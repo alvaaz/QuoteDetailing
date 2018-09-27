@@ -17,8 +17,7 @@ const LoadingProducts = () => {
       <Products>
         <Product />
         <Product />
-        <Product />
-        <Product />
+
       </Products>
     );
 }

@@ -38,7 +38,7 @@ const Cars = ({ data: { loading, error, cars}, selectedItems, handleClassSelecti
         </ContainerCard>
       )
     }
-    return <LoadingProducts />;
+    return <LoadingProducts />
   }
 
 export const cars = gql`

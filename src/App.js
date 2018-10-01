@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { initialState } from './initial-state'
 import First from './components/pages/First'
 import Second from './components/pages/Second'
-import {Third} from './components/Steps'
+import { Third } from './components/Steps'
 import { SideBar } from './components/SideBar'
 import Buttons from './components/Buttons'
 import styled from 'styled-components'

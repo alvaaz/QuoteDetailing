@@ -10,6 +10,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { ThemeProvider, injectGlobal } from 'styled-components';
+import { BrowserRouter as Router } from 'react-router-dom'
 
 // Replace this with your project's endpoint
 const GRAPHCMS_API = 'https://api-useast.graphcms.com/v1/cjlwqnow603bo01gp1ub4hgoc/master'
@@ -37,11 +38,12 @@ const theme = {
 }
 
 ReactDOM.render(
+  <Router>
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>
-    </ApolloProvider>,
-    document.getElementById('root')
+    </ApolloProvider>
+  </Router>, document.getElementById('root')
   )
   registerServiceWorker()

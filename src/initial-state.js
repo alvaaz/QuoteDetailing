@@ -3,21 +3,8 @@ export const initialState = {
     enableStep: false,
     complete: false,
     totalAmount: 0,
+    submitted: false,
     cart: [],
-    stages: [
-        {
-            name: 'Tipo de vehículo'
-        },
-        {
-            name: 'Estado Pintura'
-        },
-        {
-            name: 'Tercera'
-        },
-        {
-            name: 'Cuarta'
-        }
-    ],
     selected: [
         {
             option: null

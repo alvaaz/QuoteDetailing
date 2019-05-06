@@ -44,5 +44,4 @@ Indicator.propTypes = {
     current: PropTypes.bool,
 }
 
-
 export default Indicator

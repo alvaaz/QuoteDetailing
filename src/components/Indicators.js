@@ -10,6 +10,9 @@ const Container = styled.div`
     background-color: #F9FAFD;
     font-size: 14px;
     text-align: center;
+    &__hola {
+
+    }
     line-height: 24px;
     cursor: pointer;
     border: ${props => props.current || props.check ? `2px solid ${props.theme.success}` : `2px solid ${props.theme.mainSoft}`};
